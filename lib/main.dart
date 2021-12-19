@@ -2,9 +2,8 @@ import 'package:busgo/authentication/auth_form.dart';
 import 'package:busgo/authentication/auth_screen.dart';
 import 'package:busgo/packages.dart';
 import 'package:busgo/splash_screen.dart';
+import 'package:busgo/view_edit_profile.dart';
 import 'package:flutter/material.dart';
-
-import 'dashboard.dart';
 import 'Trips/findTrips.dart';
 import 'Trips/tripsHistory.dart';
 
@@ -30,17 +29,19 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.orangeAccent,
         ),
         routes: {
-          Dashboard.routeName: (context) => const Dashboard(),
           FindTrips.routeName: (context) => FindTrips(),
           TripsHistory.routeName: (context) => TripsHistory(),
           AuthScreen.routeName: (context) => const AuthScreen(),
           Packages.routeName: (context) => Packages(),
+          FromTo.routeName: (context) => const FromTo(),
+           ViewEditProfile.routeName: (context) => const ViewEditProfile(),
 
-          '/LiveChat': (context) => Chat(),
-        '/DriverDetails2': (context) => DriverDetailsTwoo(),
-        '/DriverDetails1': (context) => DriverDetails(),
-        '/FromTo': (context) => FromTo(),
-        '/Rating': (context) => RatingDriver(),
+
+          '/LiveChat': (context) => const Chat(),
+        '/DriverDetails2': (context) => const DriverDetailsTwoo(),
+        '/DriverDetails1': (context) => const DriverDetails(),
+        '/FromTo': (context) => const FromTo(),
+        '/Rating': (context) => const RatingDriver(),
         },
         home: const Splash(),
       );

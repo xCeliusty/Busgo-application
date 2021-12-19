@@ -1,7 +1,8 @@
-import 'package:busgo/dashboard.dart';
 import 'package:busgo/Trips/findTrips.dart';
 import 'package:busgo/Trips/tripsHistory.dart';
 import 'package:busgo/packages.dart';
+import 'package:busgo/screens/maps.dart';
+import 'package:busgo/view_edit_profile.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -20,7 +21,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.dashboard),
             title: const Text("Dashboard"),
             onTap: () {
-              Navigator.of(context).pushNamed(Dashboard.routeName);
+              Navigator.of(context).pushNamed(FromTo.routeName);
             },
           ),
           ListTile(
@@ -42,6 +43,13 @@ class AppDrawer extends StatelessWidget {
             title: const Text("Packages"),
             onTap: () {
               Navigator.of(context).pushNamed(Packages.routeName);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.remove_red_eye),
+            title: const Text("view edit profile"),
+            onTap: () {
+              Navigator.of(context).pushNamed(ViewEditProfile.routeName);
             },
           ),
         ],

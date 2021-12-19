@@ -1,9 +1,10 @@
+import 'package:busgo/drawer/drawer.dart';
 import 'package:flutter_sliding_up_panel/flutter_sliding_up_panel.dart';
 import 'package:flutter/material.dart';
 
 class FromTo extends StatefulWidget {
   final String? title;
-
+  static const routeName = "/dashboard";
   //final VoidCallback? onSetting;
   const FromTo({Key? key, this.title}) : super(key: key);
 
@@ -13,13 +14,17 @@ class FromTo extends StatefulWidget {
 
 class _FromToState extends State<FromTo> {
   late ScrollController scrollController;
-
+  static const routeName = "/dashboard";
   SlidingUpPanelController panelController = SlidingUpPanelController();
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         Scaffold(
+          appBar: AppBar(
+        title: const Text("Our Packages"),
+      ),
+          drawer: AppDrawer(),
           body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(

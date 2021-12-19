@@ -2,9 +2,8 @@
 import 'package:busgo/Trips/findTrips.dart';
 import 'package:busgo/Trips/tripsHistory.dart';
 import 'package:busgo/packages.dart';
+import 'package:busgo/screens/maps.dart';
 import 'package:flutter/material.dart';
-
-import '../dashboard.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.dashboard),
             title: Text("Dashboard"),
             onTap: (){
-              Navigator.of(context).pushNamed(Dashboard.routeName);
+              Navigator.of(context).pushNamed(FromTo.routeName);
             },
           ),
           

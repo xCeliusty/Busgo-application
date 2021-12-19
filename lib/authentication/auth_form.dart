@@ -1,4 +1,4 @@
-import 'package:busgo/dashboard.dart';
+import 'package:busgo/screens/maps.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
@@ -26,9 +26,9 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState!.save();
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Data submitted successfully")));
-          Navigator.of(context).pushNamed(Dashboard.routeName);
-       if(_email == "admin@admin.com" && _password == "admin123")
-         Navigator.of(context).pushNamed(Dashboard.routeName);
+          Navigator.of(context).pushNamed(FromTo.routeName);
+        if(_email == "admin@admin.com" && _password == "admin123")
+          Navigator.of(context).pushNamed(FromTo.routeName);
 
     }else
       ScaffoldMessenger.of(context).showSnackBar(
