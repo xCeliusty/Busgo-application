@@ -1,9 +1,8 @@
-import 'package:bus_go/Drawer/AppDrawer.dart';
+import 'package:busgo/drawer/drawer.dart';
 import 'package:flutter/material.dart';
 
-class FindTrips extends StatelessWidget {
-  // const FindTrips({Key? key}) : super(key: key);
-  static const routeName = "/FindTrips";
+class Packages extends StatelessWidget {
+  static const routeName = "/packages";
 
   final trips = [
     {
@@ -24,66 +23,33 @@ class FindTrips extends StatelessWidget {
       "start": "6:00",
       "arrive": "8:00",
     },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
   ];
+
+  Packages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Find trip"),
+        title: const Text("Our Packages"),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Container(
         color: Colors.blue,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                "January 12, 2019",
-                style: TextStyle(fontSize: 30, color: Colors.white),
-              ),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Details",
-                style: TextStyle(fontSize: 20),
-              ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
             ),
             Expanded(
               child: Card(
                 color: Colors.white,
                 elevation: 10,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30)),
@@ -91,11 +57,11 @@ class FindTrips extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 16.0, left: 8, bottom: 12),
+                      const Padding(
+                        padding:
+                            EdgeInsets.only(top: 16.0, left: 12, bottom: 12),
                         child: Text(
-                          "Select your trip",
+                          "Check our new packages",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -119,11 +85,14 @@ class FindTrips extends StatelessWidget {
                                         Text(
                                           trips[index]["companyName"]
                                               .toString(),
-                                          style: TextStyle(fontSize: 20),
+                                          style: const TextStyle(fontSize: 20),
                                         ),
-                                        Divider(thickness: 3,),
+                                        const Divider(
+                                          thickness: 3,
+                                        ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 20.0),
+                                          padding:
+                                              const EdgeInsets.only(top: 20.0),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
@@ -133,45 +102,61 @@ class FindTrips extends StatelessWidget {
                                             //Center Row contents vertically,
                                             children: [
                                               Text(
-                                                trips[index]["start"].toString(),
-                                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                                trips[index]["start"]
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
-                                              Text(
+                                              const Text(
                                                 ":",
-                                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               Text(
-                                                trips[index]["arrive"].toString(),
-                                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                                                trips[index]["arrive"]
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                             ],
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(bottom: 20.0),
+                                          padding: const EdgeInsets.only(
+                                              bottom: 20.0),
                                           child: Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
+                                                MainAxisAlignment.spaceAround,
                                             //Center Row contents horizontally,
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                             //Center Row contents vertically,
                                             children: [
                                               Text(
                                                 trips[index]["from"].toString(),
-                                                style: TextStyle(fontSize: 20),
+                                                style: const TextStyle(
+                                                    fontSize: 20),
                                               ),
                                               Text(
                                                 trips[index]["to"].toString(),
-                                                style: TextStyle(fontSize: 20),
+                                                style: const TextStyle(
+                                                    fontSize: 20),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        Divider(thickness: 3,),
+                                        const Divider(
+                                          thickness: 3,
+                                        ),
                                         Text(
                                           "Price: ${trips[index]["price"].toString()} LE",
-                                          style: TextStyle(fontSize: 20),
+                                          style: const TextStyle(fontSize: 20),
                                         )
                                       ],
                                     ),

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # busgo
+=======
+# bus_go
+>>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
 
 A new Flutter project.
 
