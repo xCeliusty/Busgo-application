@@ -73,6 +73,7 @@ class _DriverDetialsState extends State<DriverDetailsTwoo> {
                   height: 40.0,
                 ),
 
+////////////////////eli fo2 dah el 7ta l blue wipe up
                 Flexible(
                   child: Container(
                     decoration: BoxDecoration(
@@ -87,6 +88,7 @@ class _DriverDetialsState extends State<DriverDetailsTwoo> {
                     //decoration: BoxDecoration(color: Colors.green),
                     child: ListView(
                       children: [
+                        //profile pic
                         Padding(
                           padding: const EdgeInsets.only(top: 15.0),
                           child: Row(
@@ -102,7 +104,8 @@ class _DriverDetialsState extends State<DriverDetailsTwoo> {
                                     height: 90,
                                   ),
                                 ),
-                              ),
+                              ), //end profile pic
+                              //car model eh                //second [adding]
                               Padding(
                                 padding: const EdgeInsets.only(right: 58.0),
                                 child: Column(
@@ -123,20 +126,22 @@ class _DriverDetialsState extends State<DriverDetailsTwoo> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              ), //car model eh
                             ],
                           ),
-                        ),
+                        ), //end ofsecond [adding]
 
                         ///5laasna awl row
+                        ///
                         Padding(
+                          //pading lil phone
                           padding: const EdgeInsets.only(top: 15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 50.0, bottom: 85),
+                                    left: 40, bottom: 40, top: 0),
                                 child: Column(
                                   children: const [
                                     IconButton(
@@ -153,12 +158,13 @@ class _DriverDetialsState extends State<DriverDetailsTwoo> {
                                 ),
                               ),
                               Padding(
+                                //send message
                                 //text
                                 padding: const EdgeInsets.only(
-                                    top: 30, bottom: 90, right: 20),
+                                    top: 0, bottom: 30, right: 20),
                                 child: ElevatedButton(
                                     onPressed: () {
-                                      // Navigator.pushNamed(context, '/LiveChat');
+                                      Navigator.pushNamed(context, '/LiveChat');
                                     },
                                     style: ElevatedButton.styleFrom(
                                         primary: Colors.blueAccent,
@@ -178,20 +184,36 @@ class _DriverDetialsState extends State<DriverDetailsTwoo> {
                                       ),
                                     )),
                               ),
-
-                              ///////////////////////////////////////////////////////////////////////////////////
-                              /*Padding(
-                                padding: const EdgeInsets.only(left: 30.0),
-                                child: Text(
-                                  'EGP 200.26 ',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                              ),*/
                             ],
                           ),
                         ),
+                        //cancel part
+                        Padding(
+                          //text
+                          padding: const EdgeInsets.only(top: 0),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                // Navigator.pushNamed(context, '/LiveChat');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.blueAccent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  textStyle: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Mouse Memoirs',
+                                  )),
+                              child: Text(
+                                'Cancel',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              )),
+                        ), //end of pading bain l phone + message
+
+                        /////confirm part
                       ],
                     ),
                     //color: Colors.white,

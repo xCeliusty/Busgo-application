@@ -77,7 +77,9 @@ class _RatingDriverState extends State<RatingDriver> {
                     bottom: 50,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/LiveChat');
+                    },
                     style: ElevatedButton.styleFrom(primary: Color(0xff000000)),
                     child: Text(
                       'Submit',

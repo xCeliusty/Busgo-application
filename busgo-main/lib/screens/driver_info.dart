@@ -1,17 +1,17 @@
 import 'package:flutter_sliding_up_panel/flutter_sliding_up_panel.dart';
 import 'package:flutter/material.dart';
 
-class DriverDetials extends StatefulWidget {
+class DriverDetails extends StatefulWidget {
   final String? title;
 
   //final VoidCallback? onSetting;
-  const DriverDetials({Key? key, this.title}) : super(key: key);
+  const DriverDetails({Key? key, this.title}) : super(key: key);
 
   @override
-  _DriverDetialsState createState() => _DriverDetialsState();
+  _DriverDetailsState createState() => _DriverDetailsState();
 }
 
-class _DriverDetialsState extends State<DriverDetials> {
+class _DriverDetailsState extends State<DriverDetails> {
   late ScrollController scrollController;
 
   SlidingUpPanelController panelController = SlidingUpPanelController();
@@ -70,8 +70,21 @@ class _DriverDetialsState extends State<DriverDetials> {
                   ),
                   height: 40.0,
                 ),
+
+                /////////////////////////////second container
                 Flexible(
                   child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFA825), //background color
+                      border: Border.all(
+                        color: Color(0xFF797979), //dah l outline
+                        width: 2, //lenght l outline y3ni somko
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(13),
+                      ),
+                    ),
+                    ////// kof kan styling
                     child: ListView(
                       children: [
                         Padding(
@@ -119,6 +132,8 @@ class _DriverDetialsState extends State<DriverDetials> {
                             ],
                           ),
                         ),
+
+                        ///3rd car
                         Padding(
                           padding: const EdgeInsets.only(top: 15.0),
                           child: Row(
@@ -164,11 +179,39 @@ class _DriverDetialsState extends State<DriverDetials> {
                             ],
                           ),
                         ),
+
+                        //3rd thing button
+                        Padding(
+                          //text
+                          padding: const EdgeInsets.only(
+                              top: 0, bottom: 0, right: 0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/DriverDetails2');
+                            },
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.blueAccent,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                textStyle: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Mouse Memoirs',
+                                )),
+                            child: Text(
+                              'Confirm',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    color: Colors.white,
                   ),
                 ),
+                //////////////
               ],
               mainAxisSize: MainAxisSize.max,
             ),
