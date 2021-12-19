@@ -1,5 +1,6 @@
-import 'package:bus_go/Trips/FindTrips.dart';
-import 'package:bus_go/Trips/TripsHistory.dart';
+
+import 'package:busgo/Trips/FindTrips.dart';
+import 'package:busgo/Trips/TripsHistory.dart';
 import 'package:flutter/material.dart';
 
 import '../Dashboard.dart';

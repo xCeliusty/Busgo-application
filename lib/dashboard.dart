@@ -1,4 +1,5 @@
-import 'package:bus_go/Drawer/AppDrawer.dart';
+
+import 'package:busgo/drawer/AppDrawer.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {

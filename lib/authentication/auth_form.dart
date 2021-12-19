@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import 'package:busgo/dashboard.dart';
-=======
-import 'package:bus_go/Dashboard.dart';
->>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({Key? key}) : super(key: key);
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
   @override
   _AuthFormState createState() => _AuthFormState();
 }
@@ -34,10 +26,7 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState!.save();
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Data submitted successfully")));
-<<<<<<< HEAD
           Navigator.of(context).pushNamed(Dashboard.routeName);
-=======
->>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
       if(_email == "admin@admin.com" && _password == "admin123")
         Navigator.of(context).pushNamed(Dashboard.routeName);
 
@@ -186,19 +175,11 @@ class _AuthFormState extends State<AuthForm> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-<<<<<<< HEAD
                         key: const ValueKey('address'),
                         autocorrect: false,
                         textCapitalization: TextCapitalization.none,
                         enableSuggestions: false,
                         decoration: const InputDecoration(
-=======
-                        key: ValueKey('address'),
-                        autocorrect: false,
-                        textCapitalization: TextCapitalization.none,
-                        enableSuggestions: false,
-                        decoration: InputDecoration(
->>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
                           labelText: 'Address',
                           prefixIcon: Padding(
                             padding: EdgeInsets.all(0.0),
@@ -226,11 +207,7 @@ class _AuthFormState extends State<AuthForm> {
                       _submitForm();
                     },
                         child: Text(_login ? "Sign in" : "Sign up",
-<<<<<<< HEAD
                           style: const TextStyle(fontSize: 20),)),
-=======
-                          style: TextStyle(fontSize: 20),)),
->>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
                   ),
 
 
@@ -243,11 +220,7 @@ class _AuthFormState extends State<AuthForm> {
                       });
                     },
                         child: Text(_login ? "Create new account" : "I have an account",
-<<<<<<< HEAD
                           style: const TextStyle(fontSize: 20),)),
-=======
-                          style: TextStyle(fontSize: 20),)),
->>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
                   ),
                 ],
               ),
