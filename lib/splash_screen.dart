@@ -1,4 +1,4 @@
-import 'package:busgo/Dashboard.dart';
+import 'package:busgo/dashboard.dart';
 import 'package:busgo/authentication/auth_form.dart';
 import 'package:busgo/authentication/auth_screen.dart';
 import 'package:busgo/drawer/drawer.dart';

@@ -1,9 +1,9 @@
 
-import 'package:busgo/Trips/FindTrips.dart';
-import 'package:busgo/Trips/TripsHistory.dart';
+import 'package:busgo/Trips/findTrips.dart';
+import 'package:busgo/Trips/tripsHistory.dart';
 import 'package:flutter/material.dart';
 
-import '../Dashboard.dart';
+import '../dashboard.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
