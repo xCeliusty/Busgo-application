@@ -1,13 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     package="com.example.busgo">
    <application
         android:label="busgo"
-=======
-    package="com.example.bus_go">
-   <application
-        android:label="bus_go"
->>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
