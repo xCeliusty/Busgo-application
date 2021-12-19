@@ -27,8 +27,8 @@ class _AuthFormState extends State<AuthForm> {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Data submitted successfully")));
           Navigator.of(context).pushNamed(Dashboard.routeName);
-      if(_email == "admin@admin.com" && _password == "admin123")
-        Navigator.of(context).pushNamed(Dashboard.routeName);
+       if(_email == "admin@admin.com" && _password == "admin123")
+         Navigator.of(context).pushNamed(Dashboard.routeName);
 
     }else
       ScaffoldMessenger.of(context).showSnackBar(

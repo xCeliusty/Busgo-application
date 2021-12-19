@@ -1,6 +1,7 @@
 
 import 'package:busgo/Trips/findTrips.dart';
 import 'package:busgo/Trips/tripsHistory.dart';
+import 'package:busgo/packages.dart';
 import 'package:flutter/material.dart';
 
 import '../dashboard.dart';
@@ -24,6 +25,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed(Dashboard.routeName);
             },
           ),
+          
           Divider(),
 
           ListTile(
@@ -38,6 +40,13 @@ class AppDrawer extends StatelessWidget {
             title: Text("Trips History"),
             onTap: (){
               Navigator.of(context).pushNamed(TripsHistory.routeName);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.shopping_bag),
+            title: Text("Packages"),
+            onTap: (){
+              Navigator.of(context).pushNamed(Packages.routeName);
             },
           ),
 

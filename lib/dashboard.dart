@@ -1,4 +1,3 @@
-
 import 'package:busgo/drawer/appDrawer.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +16,3 @@ class Dashboard extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-

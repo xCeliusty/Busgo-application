@@ -8,6 +8,12 @@ import 'dashboard.dart';
 import 'Trips/findTrips.dart';
 import 'Trips/tripsHistory.dart';
 
+import './screens/chat.dart';
+import './screens/driver_info.dart';
+import './screens/rating_driver.dart';
+import './screens/driver_info3.dart';
+import './screens/maps.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,6 +35,12 @@ class MyApp extends StatelessWidget {
           TripsHistory.routeName: (context) => TripsHistory(),
           AuthScreen.routeName: (context) => const AuthScreen(),
           Packages.routeName: (context) => Packages(),
+
+          '/LiveChat': (context) => Chat(),
+        '/DriverDetails2': (context) => DriverDetailsTwoo(),
+        '/DriverDetails1': (context) => DriverDetails(),
+        '/FromTo': (context) => FromTo(),
+        '/Rating': (context) => RatingDriver(),
         },
         home: const Splash(),
       );
