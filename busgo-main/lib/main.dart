@@ -16,6 +16,20 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           accentColor: Colors.orangeAccent,
         ),
-        home: AuthScreen());
+        home: AuthScreen(),
+    initialRoute: '/',
+      routes: {
+        '/LiveChat': (context) => Chat(),
+        '/DriverDetails2': (context) => DriverDetailsTwoo(),
+        '/DriverDetails1': (context) => DriverDetails(),
+        '/FromTo': (context) => FromTo(),
+        '/Rating': (context) => RatingDriver(),
+
+        //'':
+      },
+    
+    
+    
+    );
   }
 }
