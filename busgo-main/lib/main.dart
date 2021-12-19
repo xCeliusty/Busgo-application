@@ -2,6 +2,13 @@ import 'package:bus_go/authentication/auth_form.dart';
 import 'package:bus_go/authentication/auth_screen.dart';
 import 'package:flutter/material.dart';
 
+//rolas foldrs
+import './screens/chat.dart';
+import './screens/driver_info.dart';
+import './screens/rating_driver.dart';
+import './screens/driver_info3.dart';
+import './screens/maps.dart';
+
 void main() {
   runApp(MyApp());
 }
