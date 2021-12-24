@@ -25,14 +25,15 @@ class _AuthFormState extends State<AuthForm> {
     if (isValid) {
       _formKey.currentState!.save();
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Data submitted successfully")));
+          const SnackBar(content: Text("Data submitted successfully")));
           Navigator.of(context).pushNamed(FromTo.routeName);
-        if(_email == "admin@admin.com" && _password == "admin123")
+        if(_email == "admin@admin.com" && _password == "admin123") {
           Navigator.of(context).pushNamed(FromTo.routeName);
+        }
 
     }else
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Please enter all fields")));
+          const SnackBar(content: Text("Please enter all fields")));
   }
 
   @override
@@ -49,7 +50,7 @@ class _AuthFormState extends State<AuthForm> {
             .accentColor,
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Form(
               key: _formKey,
               child: Column(
