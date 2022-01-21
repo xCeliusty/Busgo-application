@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/trackingdirectionsmap/locationservice.dart';
+import 'package:busgo/trackingdirectionsmap/locationservice.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -92,14 +92,15 @@ class MapFromToState extends State<MapFromTo> {
                   children: [
                     TextFormField(
                       controller: _originController,
-                      decoration: InputDecoration(hintText: ' Enter Start Point''),
+                      decoration:
+                          InputDecoration(hintText: ' Enter Start Point'),
                       onChanged: (value) {
                         print(value);
                       },
                     ),
                     TextFormField(
                       controller: _destinationController,
-                      decoration: InputDecoration(hintText: ' Enter Drop Point''),
+                      decoration: InputDecoration(hintText: 'Enter Drop Point'),
                       onChanged: (value) {
                         print(value);
                       },
@@ -111,7 +112,7 @@ class MapFromToState extends State<MapFromTo> {
                           onPressed: () {
                             //Navigator.pushNamed(context, '/DriverDetails1');
                           },
-                          child: Text("Next"),
+                          child: Text("Confirm"),
                         ),
                       ],
                     )
