@@ -5,11 +5,14 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FromTo extends StatefulWidget {
+  static const routeName = "/FromTo";
+
   @override
   State<FromTo> createState() => MapFromToState();
 }
 
 class MapFromToState extends State<FromTo> {
+  static const routeName = "/from-to";
   Completer<GoogleMapController> _controller = Completer();
   TextEditingController _originController = TextEditingController();
   TextEditingController _destinationController = TextEditingController();

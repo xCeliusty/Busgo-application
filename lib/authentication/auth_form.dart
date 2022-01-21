@@ -31,10 +31,10 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState!.save();
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Data submitted successfully")));
-      // Navigator.of(context).pushNamed(FromTo.routeName);
-      Navigator.pushNamed(context, '/FromTo');
+      Navigator.of(context).pushNamed(FromTo.routeName);
+      // Navigator.pushNamed(context, '/FromTo');
       if (_email == "admin@admin.com" && _password == "admin123") {
-        // Navigator.of(context).pushNamed(FromTo.routeName);
+        Navigator.of(context).pushNamed(FromTo.routeName);
         Navigator.pushNamed(context, '/FromTo');
       }
     } else {
@@ -282,7 +282,11 @@ class _AuthFormState extends State<AuthForm> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _login = !_login;
+                          });
+                        },
                         child: Text(
                           _login ? "Create new account" : "I have an account",
                           style: const TextStyle(fontSize: 20),
