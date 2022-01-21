@@ -110,7 +110,7 @@ class MapFromToState extends State<MapFromTo> {
                         //  TextButton(onPressed: () {}, child: Text("Cancle")),
                         ElevatedButton(
                           onPressed: () {
-                            //Navigator.pushNamed(context, '/DriverDetails1');
+                            Navigator.pushNamed(context, '/DriverDetails1');
                           },
                           child: Text("Confirm"),
                         ),

@@ -216,8 +216,8 @@ class _DriverDetailsState extends State<DriverDetails> {
               mainAxisSize: MainAxisSize.max,
             ),
           ),
-          controlHeight: 40.0,
-          anchor: 0.4,
+          controlHeight: 140.0,
+          anchor: 0.4, //ytl3a bi max weidth ad eh
           panelController: panelController,
           onTap: () {
             ///Customize the processing logic
