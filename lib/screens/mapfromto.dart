@@ -92,14 +92,14 @@ class MapFromToState extends State<MapFromTo> {
                   children: [
                     TextFormField(
                       controller: _originController,
-                      decoration: InputDecoration(hintText: ' Origin'),
+                      decoration: InputDecoration(hintText: ' Enter Start Point''),
                       onChanged: (value) {
                         print(value);
                       },
                     ),
                     TextFormField(
                       controller: _destinationController,
-                      decoration: InputDecoration(hintText: ' Destination'),
+                      decoration: InputDecoration(hintText: ' Enter Drop Point''),
                       onChanged: (value) {
                         print(value);
                       },
