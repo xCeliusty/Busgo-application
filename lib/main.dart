@@ -1,14 +1,13 @@
 import 'package:busgo/authentication/auth_form.dart';
 import 'package:busgo/authentication/auth_screen.dart';
 import 'package:busgo/packages.dart';
-import 'package:busgo/screens/mapfromto.dart';
+import 'package:busgo/screens/maps.dart';
 import 'package:busgo/splash_screen.dart';
 import 'package:busgo/view_edit_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Trips/find_trips.dart';
 import 'Trips/tripsHistory.dart';
-
 import './screens/chat.dart';
 import './screens/DriverDetails.dart';
 import './screens/rating_driver.dart';
@@ -37,16 +36,16 @@ class MyApp extends StatelessWidget {
         TripsHistory.routeName: (context) => TripsHistory(),
         AuthScreen.routeName: (context) => const AuthScreen(),
         Packages.routeName: (context) => Packages(),
-        FromTo.routeName: (context) => const FromTo(),
+        // FromTo.routeName: (context) => FromTo(),
         ViewEditProfile.routeName: (context) => const ViewEditProfile(),
         '/LiveChat': (context) => const Chat(),
         '/DriverDetails2': (context) => const DriverDetailsTwoo(),
         '/DriverDetails1': (context) => const DriverDetails(),
-        '/FromTo': (context) => const FromTo(),
+        '/FromTo': (context) => FromTo(),
         '/Rating': (context) => const RatingDriver(),
       },
       home: const Splash(),
-     // home: MapFromTo(),
+      // home: MapFromTo(),
     );
   }
 }
