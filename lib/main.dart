@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
         '/FromTo': (context) => const FromTo(),
         '/Rating': (context) => const RatingDriver(),
       },
-      //home: const Splash(),
-      home: MapFromTo(),
+      home: const Splash(),
+     // home: MapFromTo(),
     );
   }
 }
