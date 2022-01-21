@@ -1,4 +1,4 @@
-import 'package:busgo/drawer/appDrawer.dart';
+import 'package:busgo/drawer/drawer.dart';
 import 'package:flutter/material.dart';
 
 class TripsHistory extends StatelessWidget {
@@ -49,7 +49,7 @@ class TripsHistory extends StatelessWidget {
       appBar: AppBar(
         title: Text("Trips History"),
       ),
-      drawer: AppDrawer(),
+      drawer: Drawer(),
       body: Padding(
           padding: const EdgeInsets.all(8.0),
 
