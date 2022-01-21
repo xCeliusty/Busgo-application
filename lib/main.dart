@@ -27,37 +27,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
         accentColor: Colors.white,
-
       ),
       routes: {
         findTrips.routeName: (context) => const findTripss(),
         TripsHistory.routeName: (context) => TripsHistory(),
-        AuthScreen.routeName: (context) => const AuthScreen(),
+        AuthScreen.routeName: (BuildContext context) {
+          return const AuthScreen();
+        },
         Packages.routeName: (context) => Packages(),
         FromTo.routeName: (context) => const FromTo(),
         ViewEditProfile.routeName: (context) => const ViewEditProfile(),
-
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blueGrey,
-        accentColor: Colors.white,
-
-        ),
-        routes: {
-          findTrips.routeName: (context) => const findTripss(),
-          TripsHistory.routeName: (context) => TripsHistory(),
-          AuthScreen.routeName: (BuildContext context) {
-            return const AuthScreen();
-          },
-          Packages.routeName: (context) => Packages(),
-          FromTo.routeName: (context) => const FromTo(),
-           ViewEditProfile.routeName: (context) => const ViewEditProfile(),
-
         '/LiveChat': (context) => const Chat(),
         '/DriverDetails2': (context) => const DriverDetailsTwoo(),
         '/DriverDetails1': (context) => const DriverDetails(),
