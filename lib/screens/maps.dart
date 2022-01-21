@@ -1,4 +1,3 @@
-import 'package:busgo/drawer/drawer.dart';
 import 'package:flutter_sliding_up_panel/flutter_sliding_up_panel.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +21,8 @@ class _FromToState extends State<FromTo> {
       children: <Widget>[
         Scaffold(
           appBar: AppBar(
-        title: const Text("Our Packages"),
-      ),
-          drawer: AppDrawer(),
+            title: const Text("Our Packages"),
+          ),
           body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
