@@ -11,8 +11,6 @@ class AuthForm extends StatefulWidget {
 
   @override
   _AuthFormState createState() => _AuthFormState();
-
-  
 }
 
 class _AuthFormState extends State<AuthForm> {
@@ -24,8 +22,6 @@ class _AuthFormState extends State<AuthForm> {
   String _password = "";
   String _phoneNumber = "";
   String _address = "";
-  
-    
 
   void _submitForm() {
     final isValid = _formKey.currentState!.validate();
@@ -35,9 +31,11 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState!.save();
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Data submitted successfully")));
-      Navigator.of(context).pushNamed(FromTo.routeName);
+      // Navigator.of(context).pushNamed(FromTo.routeName);
+      Navigator.pushNamed(context, '/FromTo');
       if (_email == "admin@admin.com" && _password == "admin123") {
-        Navigator.of(context).pushNamed(FromTo.routeName);
+        // Navigator.of(context).pushNamed(FromTo.routeName);
+        Navigator.pushNamed(context, '/FromTo');
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -47,10 +45,8 @@ class _AuthFormState extends State<AuthForm> {
 
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  
   @override
   Widget build(BuildContext context) {
-    
     return Center(
       child: Card(
         margin: const EdgeInsets.all(15),
@@ -231,45 +227,44 @@ class _AuthFormState extends State<AuthForm> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                         onPressed: () async {
-
-                          if(!_login) {
+                          if (!_login) {
                             try {
-                            UserCredential userCredential = await FirebaseAuth
-                                .instance
-                                .createUserWithEmailAndPassword(
-                                    email: _email, password: _password);
-                          } on FirebaseAuthException catch (e) {
-                            if (e.code == 'weak-password') {
-                              print('The password provided is too weak.');
-                            } else if (e.code == 'email-already-in-use') {
-                              print(
-                                  'The account already exists for that email.');
+                              UserCredential userCredential = await FirebaseAuth
+                                  .instance
+                                  .createUserWithEmailAndPassword(
+                                      email: _email, password: _password);
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'weak-password') {
+                                print('The password provided is too weak.');
+                              } else if (e.code == 'email-already-in-use') {
+                                print(
+                                    'The account already exists for that email.');
+                              }
+                            } catch (e) {
+                              print(e);
                             }
-                          } catch (e) {
-                            print(e);
+
+                            var uid = FirebaseAuth.instance.currentUser!.uid;
+
+                            users.add({
+                              'uid': uid,
+                              'address': _address,
+                              'phonenumber': _phoneNumber,
+                              'username': _username,
+                            });
+                            // _submitForm();
+
+                            _login = true;
                           }
 
-                          var uid = FirebaseAuth.instance.currentUser!.uid;
-
-                          users.add({
-                            'uid': uid,
-                            'address': _address,
-                            'phonenumber': _phoneNumber,
-                            'username': _username,
-                          });
-                          // _submitForm();
-
-                          _login = true;
-                          } 
-
-
-                          if(_login) {
+                          if (_login) {
                             try {
-                              UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                email: _email,
-                                password: _password
-                              );
-                              Navigator.of(context).pushNamed(FromTo.routeName);
+                              UserCredential userCredential = await FirebaseAuth
+                                  .instance
+                                  .signInWithEmailAndPassword(
+                                      email: _email, password: _password);
+                              //Navigator.of(context).pushNamed(FromTo.routeName);
+                              Navigator.pushNamed(context, '/FromTo');
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'user-not-found') {
                                 print('No user found for that email.');
@@ -278,9 +273,6 @@ class _AuthFormState extends State<AuthForm> {
                               }
                             }
                           }
-                          
-
-
                         },
                         child: Text(
                           _login ? "Sign in" : "Sign up",
@@ -290,9 +282,7 @@ class _AuthFormState extends State<AuthForm> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           _login ? "Create new account" : "I have an account",
                           style: const TextStyle(fontSize: 20),
