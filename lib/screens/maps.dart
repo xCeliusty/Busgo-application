@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'package:flutter_sliding_up_panel/flutter_sliding_up_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:busgo/trackingdirectionsmap/locationservice.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -10,7 +10,7 @@ class FromTo extends StatefulWidget {
 }
 
 class MapFromToState extends State<FromTo> {
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
   TextEditingController _originController = TextEditingController();
   TextEditingController _destinationController = TextEditingController();
 
@@ -28,21 +28,23 @@ class MapFromToState extends State<FromTo> {
   );
 
   @override
-  void initState() {
-    super.initState();
-
-    _setMarker(LatLng(30.033333, 31.233334));
-  }
-
-  void _setMarker(LatLng point) {
-    setState(() {
-      _markers.add(
-        Marker(
-          markerId: MarkerId('marker'),
-          position: point,
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Scaffold(
+          appBar: AppBar(
+            title: const Text("Our Packages"),
+          ),
+          body: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage("assets/1.jpg"),
+              fit: BoxFit.cover,
+            )),
+          ),
         ),
-      );
-    });
+      )
+    };
   }
 
   void _setPolygon() {
