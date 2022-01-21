@@ -81,7 +81,7 @@ class MapFromToState extends State<MapFromTo> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text('Google Maps'),
+        title: Text('Set Location'),
       ),
       body: Column(
         children: [
