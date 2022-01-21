@@ -1,4 +1,4 @@
-import 'package:busgo/drawer/appDrawer.dart';
+import 'package:busgo/drawer/drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -68,7 +68,7 @@ class findTrips extends State<findTripss> {
       ),
       drawer: AppDrawer(),
       body: Container(
-        color: Colors.blue,
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -88,7 +88,7 @@ class findTrips extends State<findTripss> {
             ),
             Expanded(
               child: Card(
-                color: Colors.white,
+                color: Colors.blueGrey,
                 elevation: 10,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
