@@ -1,6 +1,7 @@
 import 'package:busgo/authentication/auth_form.dart';
 import 'package:busgo/authentication/auth_screen.dart';
 import 'package:busgo/packages.dart';
+import 'package:busgo/screens/mapfromto.dart';
 import 'package:busgo/splash_screen.dart';
 import 'package:busgo/view_edit_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,11 +10,11 @@ import 'Trips/find_trips.dart';
 import 'Trips/tripsHistory.dart';
 
 import './screens/chat.dart';
-import './screens/driver_info.dart';
+import './screens/DriverDetails.dart';
 import './screens/rating_driver.dart';
 import './screens/driver_info3.dart';
 import './screens/maps.dart';
- 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -46,8 +47,9 @@ class MyApp extends StatelessWidget {
         '/DriverDetails1': (context) => const DriverDetails(),
         '/FromTo': (context) => const FromTo(),
         '/Rating': (context) => const RatingDriver(),
-        },
-        home: const Splash(),
-      );
+      },
+      home: const Splash(),
+     // home: MapFromTo(),
+    );
   }
 }
