@@ -11,7 +11,7 @@ import 'Trips/tripsHistory.dart';
 import './screens/chat.dart';
 import './screens/DriverDetails.dart';
 import './screens/rating_driver.dart';
-import './screens/driver_info3.dart';
+import './screens/DriverDetailsTwoo.dart';
 import './screens/maps.dart';
 
 Future<void> main() async {
