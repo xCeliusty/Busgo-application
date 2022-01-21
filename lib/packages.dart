@@ -35,7 +35,7 @@ class Packages extends StatelessWidget {
       ),
       drawer: const AppDrawer(),
       body: Container(
-        color: Colors.blue,
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -47,7 +47,7 @@ class Packages extends StatelessWidget {
             ),
             Expanded(
               child: Card(
-                color: Colors.white,
+                color: Colors.blueGrey,
                 elevation: 10,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(

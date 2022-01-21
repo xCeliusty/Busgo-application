@@ -1,8 +1,10 @@
 import 'package:busgo/Trips/find_trips.dart';
 import 'package:busgo/Trips/tripsHistory.dart';
+import 'package:busgo/authentication/auth_screen.dart';
 import 'package:busgo/packages.dart';
 import 'package:busgo/screens/maps.dart';
 import 'package:busgo/view_edit_profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -52,6 +54,15 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed(ViewEditProfile.routeName);
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text("Signout"),
+            onTap: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.of(context).pushNamed(AuthScreen.routeName);
+            },
+          ),
+
         ],
       ),
     );

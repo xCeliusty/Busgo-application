@@ -22,13 +22,13 @@ class _FromToState extends State<FromTo> {
       children: <Widget>[
         Scaffold(
           appBar: AppBar(
-        title: const Text("Our Packages"),
+        title: const Text("Location"),
       ),
           drawer: AppDrawer(),
           body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage("assets/1.jpg"),
+           image: AssetImage("assets/1.jpg"),
               fit: BoxFit.cover,
             )),
           ),
