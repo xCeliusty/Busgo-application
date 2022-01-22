@@ -11,53 +11,6 @@ class findTripss extends StatefulWidget {
 class findTrips extends State<findTripss> {
   static const routeName = "/FindTrips";
   var company_name;
-  final trips = [
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -88,14 +41,14 @@ class findTrips extends State<findTripss> {
             // ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(top: 26.0),
+                padding: const EdgeInsetsDirectional.only(top: 23.0),
                 child: Card(
                   color: Colors.blueGrey,
                   elevation: 10,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30)),
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
                   ),
                   child: Padding(
                     padding: const EdgeInsetsDirectional.only(top: 18.0),
@@ -106,9 +59,13 @@ class findTrips extends State<findTripss> {
                           const Text(
                             "SELECT YOUR TRIP",
                             style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold,color: Colors.white),
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
-                          SizedBox(height: 16.0,),
+                          SizedBox(
+                            height: 16.0,
+                          ),
                           StreamBuilder(
                               stream: FirebaseFirestore.instance
                                   .collection('trips')
@@ -123,106 +80,116 @@ class findTrips extends State<findTripss> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(26.0)
-                                          ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0)),
                                           child: Card(
-                                            color: Theme.of(context).accentColor,
+                                            color:
+                                                Theme.of(context).accentColor,
                                             elevation: 10,
                                             clipBehavior: Clip.antiAlias,
-
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Center(
                                                     child: Text(
-                                                      streamSnapshot.data!.docs[index]
+                                                      streamSnapshot
+                                                              .data!.docs[index]
                                                           ['company_name'],
-                                                      style: TextStyle(fontSize: 20),
+                                                      style: TextStyle(
+                                                          fontSize: 20),
                                                     ),
                                                   ),
                                                   const Divider(
                                                     thickness: 3,
                                                   ),
                                                   Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        top: 20.0),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 20.0),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .spaceEvenly,
                                                       //Center Row contents horizontally,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.center,
+                                                          CrossAxisAlignment
+                                                              .center,
                                                       //Center Row contents vertically,
                                                       children: [
                                                         Text(
-                                                          streamSnapshot
-                                                                  .data!.docs[index]
+                                                          streamSnapshot.data!
+                                                                  .docs[index]
                                                               ['first_time'],
                                                           style: const TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                                  FontWeight.bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                         ),
                                                         const Text(
                                                           ":",
                                                           style: TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                                  FontWeight.bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                         ),
                                                         Text(
-                                                          streamSnapshot
-                                                                  .data!.docs[index]
+                                                          streamSnapshot.data!
+                                                                  .docs[index]
                                                               ['last_time'],
                                                           style: const TextStyle(
                                                               fontSize: 20,
                                                               fontWeight:
-                                                                  FontWeight.bold),
+                                                                  FontWeight
+                                                                      .bold),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        bottom: 20.0),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            bottom: 5.0),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .spaceAround,
                                                       //Center Row contents horizontally,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.center,
+                                                          CrossAxisAlignment
+                                                              .center,
                                                       //Center Row contents vertically,
                                                       children: [
                                                         Text(
-                                                          streamSnapshot
-                                                                  .data!.docs[index]
+                                                          streamSnapshot.data!
+                                                                  .docs[index]
                                                               ['first_dest'],
-                                                          style:
-                                                              TextStyle(fontSize: 20),
+                                                          style: TextStyle(
+                                                              fontSize: 20),
                                                         ),
                                                         Text(
-                                                          streamSnapshot
-                                                                  .data!.docs[index]
+                                                          streamSnapshot.data!
+                                                                  .docs[index]
                                                               ['last_dest'],
-                                                          style:
-                                                              TextStyle(fontSize: 20),
+                                                          style: TextStyle(
+                                                              fontSize: 20),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
                                                   const Divider(
                                                     thickness: 3,
-
                                                   ),
                                                   Center(
                                                     child: Text(
                                                       "Price: ${streamSnapshot.data!.docs[index]['price']} LE",
-                                                      style: TextStyle(fontSize: 20),
+                                                      style: TextStyle(
+                                                          fontSize: 20),
                                                     ),
                                                   )
                                                 ],

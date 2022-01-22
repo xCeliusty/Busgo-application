@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:busgo/Drawer/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:busgo/trackingdirectionsmap/locationservice.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -83,6 +84,7 @@ class MapFromToState extends State<FromTo> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      drawer: AppDrawer(),
       appBar: AppBar(
         title: Text('Set Location'),
       ),
