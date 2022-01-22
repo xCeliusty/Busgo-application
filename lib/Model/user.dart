@@ -19,13 +19,7 @@ class User {
     required this.phone_number,
     required this.Password,
 
-      
-
-    
-   
-
-
-    
+  
 
   });
 }
