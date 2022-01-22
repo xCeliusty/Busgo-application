@@ -42,11 +42,13 @@ class MyApp extends StatelessWidget {
         ViewEditProfile.routeName: (context) => const ViewEditProfile(),
         '/LiveChat': (context) => const Chat(),
         '/DriverDetails2': (context) => const DriverDetailsTwoo(),
-        '/DriverDetails1': (context) => const DriverDetails(),
+        '/DriverDetails1': (context) => DriverDetails(),
         '/FromTo': (context) => FromTo(),
         '/Rating': (context) => const RatingDriver(),
       },
       home: const Splash(),
+
+      //home: DriverDetails(),
     );
   }
 }
