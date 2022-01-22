@@ -294,7 +294,7 @@
 <<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.busgo;
 =======
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.busGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.busgo;
 >>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -422,7 +422,7 @@
 <<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.busgo;
 =======
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.busGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.busgo;
 >>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -445,7 +445,7 @@
 <<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.busgo;
 =======
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.busGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.busgo;
 >>>>>>> 923f53f004a760fd8695671ee5ebf0605d47f52d
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
