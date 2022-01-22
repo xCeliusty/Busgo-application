@@ -5,26 +5,7 @@ import 'package:flutter/material.dart';
 class Packages extends StatelessWidget {
   static const routeName = "/packages";
 
-  final trips = [
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-    {
-      "companyName": "company name 1",
-      "price": 220,
-      "from": "nasr city",
-      "to": "sheraton",
-      "Date": "2020-07-30",
-      "start": "6:00",
-      "arrive": "8:00",
-    },
-  ];
+  
 
   Packages({Key? key}) : super(key: key);
 

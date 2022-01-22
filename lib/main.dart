@@ -1,6 +1,6 @@
 import 'package:busgo/authentication/auth_form.dart';
 import 'package:busgo/authentication/auth_screen.dart';
-import 'package:busgo/pages/packages.dart';
+import 'package:busgo/trips/packages.dart';
 import 'package:busgo/screens/maps.dart';
 import 'package:busgo/pages/splash_screen.dart';
 import 'package:busgo/pages/view_edit_profile.dart';
@@ -33,11 +33,12 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         findTrips.routeName: (context) => const findTripss(),
+        Packages.routeName: (context) => Packages(),
         TripsHistory.routeName: (context) => TripsHistory(),
         AuthScreen.routeName: (BuildContext context) {
           return const AuthScreen();
         },
-        Packages.routeName: (context) => Packages(),
+        
         //FromTo.routeName: (context) => const FromTo(),
         ViewEditProfile.routeName: (context) => const ViewEditProfile(),
         '/LiveChat': (context) => const Chat(),

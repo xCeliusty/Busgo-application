@@ -11,6 +11,53 @@ class findTripss extends StatefulWidget {
 class findTrips extends State<findTripss> {
   static const routeName = "/FindTrips";
   var company_name;
+  final trips = [
+    {
+      "companyName": "company name 1",
+      "price": 220,
+      "from": "nasr city",
+      "to": "sheraton",
+      "Date": "2020-07-30",
+      "start": "6:00",
+      "arrive": "8:00",
+    },
+    {
+      "companyName": "company name 1",
+      "price": 220,
+      "from": "nasr city",
+      "to": "sheraton",
+      "Date": "2020-07-30",
+      "start": "6:00",
+      "arrive": "8:00",
+    },
+    {
+      "companyName": "company name 1",
+      "price": 220,
+      "from": "nasr city",
+      "to": "sheraton",
+      "Date": "2020-07-30",
+      "start": "6:00",
+      "arrive": "8:00",
+    },
+    {
+      "companyName": "company name 1",
+      "price": 220,
+      "from": "nasr city",
+      "to": "sheraton",
+      "Date": "2020-07-30",
+      "start": "6:00",
+      "arrive": "8:00",
+    },
+    {
+      "companyName": "company name 1",
+      "price": 220,
+      "from": "nasr city",
+      "to": "sheraton",
+      "Date": "2020-07-30",
+      "start": "6:00",
+      "arrive": "8:00",
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +72,16 @@ class findTrips extends State<findTripss> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // const Padding(
-            //   padding: EdgeInsets.all(10.0),
-            //   child: Text(
-            //     "January 12, 2019",
-            //     style: TextStyle(fontSize: 30, color: Colors.white),
-            //   ),
-            // ),
-            // const Padding(
-            //   padding: EdgeInsets.all(8.0),
-            //   child: Text(
-            //     "Details",
-            //     style: TextStyle(fontSize: 20),
-            //   ),
-            // ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(top: 23.0),
+                padding: const EdgeInsetsDirectional.only(top: 26.0),
                 child: Card(
                   color: Colors.blueGrey,
                   elevation: 10,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)),
                   ),
                   child: Padding(
                     padding: const EdgeInsetsDirectional.only(top: 18.0),
@@ -81,7 +114,7 @@ class findTrips extends State<findTripss> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(20.0)),
+                                                  BorderRadius.circular(26.0)),
                                           child: Card(
                                             color:
                                                 Theme.of(context).accentColor,
@@ -154,7 +187,7 @@ class findTrips extends State<findTripss> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                            bottom: 5.0),
+                                                            bottom: 20.0),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
