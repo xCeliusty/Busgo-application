@@ -87,6 +87,7 @@ class MapFromToState extends State<FromTo> {
       drawer: AppDrawer(),
       appBar: AppBar(
         title: Text('Set Location'),
+        backgroundColor: Colors.blueGrey,
       ),
       body: Column(
         children: [
@@ -114,7 +115,7 @@ class MapFromToState extends State<FromTo> {
                       children: [
                         //  TextButton(onPressed: () {}, child: Text("Cancle")),
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             Navigator.pushNamed(context, '/DriverDetails1');
                           },
                           child: Text("Confirm"),
@@ -140,6 +141,7 @@ class MapFromToState extends State<FromTo> {
                   _setPolyline(directions['polyline_decoded']);
                 },
                 icon: Icon(Icons.search),
+                color: Colors.white,
               ),
             ],
           ),
