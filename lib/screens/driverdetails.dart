@@ -110,162 +110,161 @@ class DriverDetailsState extends State<DriverDetails> {
             ),
           ),
         ),
-        Padding(
-          //padding: const EdgeInsets.all(100.0),
-          //padding: const EdgeInsets.only(top: 30.0),
-          padding: const EdgeInsets.only(top: 70),
-          child: Container(
-            // constraints: BoxConstraints.expand(bottom: 50),
-            color: Colors.white,
-            height: 120,
-            width: 500,
-            //double width,
-            child: Column(
-              children: [
-                Row(
-                  //crossAxisAlignment: CrossAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+        StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance.collection('buses').snapshots(),
+          builder: (
+            BuildContext context,
+            AsyncSnapshot<QuerySnapshot> snapshot,
+          ) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong');
+            }
 
-                  children: [
-                    //Row(
-                    //children: [
-                    // Expanded(
-                    // child:
-                    Column(
-                      children: <Widget>[
-                        ClipRRect(
-                          borderRadius: new BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/cars.png',
-                            height: 52,
-                          ),
-                        ),
-                        /* StreamBuilder<QuerySnapshot>(
-                          stream: FirebaseFirestore.instance
-                              .collection('buses')
-                              .snapshots(),
-                          builder: (
-                            BuildContext context,
-                            AsyncSnapshot<QuerySnapshot> snapshot,
-                          ) {
-                            if (snapshot.hasError) {
-                              return Text('Something went wrong');
-                            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Text("Loading");
+            }
+            final data = snapshot.requireData;
+            return ListView.builder(
+              itemCount: data.size,
+              itemBuilder: (context, index) {
+                //x = data.docs[index]["busType"];
+                return Padding(
+                  //padding: const EdgeInsets.all(100.0),
+                  //padding: const EdgeInsets.only(top: 30.0),
+                  padding: const EdgeInsets.only(top: 55),
+                  child: Container(
+                    // constraints: BoxConstraints.expand(bottom: 50),
+                    color: Colors.white,
+                    height: 120,
+                    width: 500,
+                    //double width,
+                    child: Column(
+                      children: [
+                        Row(
+                          //crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return Text("Loading");
-                            }
-                            final data = snapshot.requireData;
-                            return ListView.builder(
-                              itemCount: data.size,
-                              itemBuilder: (context, index) {
-                                //x = data.docs[index]["busType"];
-                                return Text(
-                                  ' ${data.docs[index]["busType"]}',
+                          children: [
+                            //Row(
+                            //children: [
+                            // Expanded(
+                            // child:
+                            Column(
+                              children: <Widget>[
+                                ClipRRect(
+                                  borderRadius: new BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/cars.png',
+                                    height: 52,
+                                  ),
+                                ),
+                                Text(
+                                  '${data.docs[index]["driverName"]}',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                );
-                              },
-                            );
-                          },
-                        ),*/
-                        Text(
-                          'Rola ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: Colors.blueGrey,
-                          ),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            //   ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  '${data.docs[index]["busType"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                                Text(
+                                  'BusTag: ${data.docs[index]["busTag"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                                // ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'EGP 89.26 ',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                                Text(
+                                  'Rating ${data.docs[index]["rating"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                                Text(
+                                  '1:55 pm ',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    //   ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'MiniBus2X',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: Colors.blueGrey,
-                          ),
-                        ),
-                        // ),
-                        Text(
-                          '1:55 am ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: Colors.blueGrey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          'EGP 89.26 ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: Colors.blueGrey,
-                          ),
-                        ),
-                        Text(
-                          'Rating 5',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: Colors.blueGrey,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
 
-                /////////////////////Button/////////////////////////////
-                //Padding(
-                //text
-                //padding: const EdgeInsets.only(top: 0, bottom: 0, right: 0),
-                //child:
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/DriverDetails2');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blueGrey,
-                    minimumSize: const Size(500, 40), //w,h
-                    /*shape: RoundedRectangleBorder(
+                        /////////////////////Button/////////////////////////////
+                        //Padding(
+                        //text
+                        //padding: const EdgeInsets.only(top: 0, bottom: 0, right: 0),
+                        //child:
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/DriverDetails2');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blueGrey,
+                            minimumSize: const Size(500, 40), //w,h
+                            /*shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),*/
-                    textStyle: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Mouse Memoirs',
-                    ),
-                  ),
-                  child: Text(
-                    'Confirm',
-                    style: TextStyle(
-                      color: Colors.white,
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Mouse Memoirs',
+                            ),
+                          ),
+                          child: Text(
+                            'Confirm',
+                            style: TextStyle(
+                              color: Colors.white,
 
-                      //width: 200.0, not working
+                              //width: 200.0, not working
+                            ),
+                          ),
+                        ),
+                        //  ),
+                      ],
                     ),
+                    //////////////////////////////////////write here colum
                   ),
-                ),
-                //  ),
-              ],
-            ),
-            //////////////////////////////////////write here colum
-          ),
-        )
+                );
+              },
+            );
+          },
+        ),
       ],
     );
   }
