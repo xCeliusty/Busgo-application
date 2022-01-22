@@ -1,9 +1,9 @@
 import 'package:busgo/authentication/auth_form.dart';
 import 'package:busgo/authentication/auth_screen.dart';
-import 'package:busgo/packages.dart';
+import 'package:busgo/pages/packages.dart';
 import 'package:busgo/screens/maps.dart';
-import 'package:busgo/splash_screen.dart';
-import 'package:busgo/view_edit_profile.dart';
+import 'package:busgo/pages/splash_screen.dart';
+import 'package:busgo/pages/view_edit_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Trips/find_trips.dart';
