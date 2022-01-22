@@ -47,8 +47,6 @@ class MyApp extends StatelessWidget {
         '/Rating': (context) => const RatingDriver(),
       },
       home: const Splash(),
-
-      //home: DriverDetails(),
     );
   }
 }
