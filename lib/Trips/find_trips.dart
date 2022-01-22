@@ -72,154 +72,170 @@ class findTrips extends State<findTripss> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                "January 12, 2019",
-                style: TextStyle(fontSize: 30, color: Colors.white),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "Details",
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
+            // const Padding(
+            //   padding: EdgeInsets.all(10.0),
+            //   child: Text(
+            //     "January 12, 2019",
+            //     style: TextStyle(fontSize: 30, color: Colors.white),
+            //   ),
+            // ),
+            // const Padding(
+            //   padding: EdgeInsets.all(8.0),
+            //   child: Text(
+            //     "Details",
+            //     style: TextStyle(fontSize: 20),
+            //   ),
+            // ),
             Expanded(
-              child: Card(
-                color: Colors.blueGrey,
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30)),
-                ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 16.0, left: 8, bottom: 12),
-                        child: Text(
-                          "Select your trip",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('trips')
-                              .snapshots(),
-                          builder: (context,
-                              AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-                            return ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: streamSnapshot.data!.docs.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Card(
-                                      color: Theme.of(context).accentColor,
-                                      elevation: 10,
-                                      child: Padding(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(top: 26.0),
+                child: Card(
+                  color: Colors.blueGrey,
+                  elevation: 10,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.only(top: 18.0),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          const Text(
+                            "SELECT YOUR TRIP",
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.bold,color: Colors.white),
+                          ),
+                          SizedBox(height: 16.0,),
+                          StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection('trips')
+                                  .snapshots(),
+                              builder: (context,
+                                  AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                                return ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: streamSnapshot.data!.docs.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              streamSnapshot.data!.docs[index]
-                                                  ['company_name'],
-                                              style: TextStyle(fontSize: 20),
-                                            ),
-                                            Divider(
-                                              thickness: 3,
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 20.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                //Center Row contents horizontally,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(26.0)
+                                          ),
+                                          child: Card(
+                                            color: Theme.of(context).accentColor,
+                                            elevation: 10,
+                                            clipBehavior: Clip.antiAlias,
+
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Column(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                //Center Row contents vertically,
+                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
-                                                    streamSnapshot
-                                                            .data!.docs[index]
-                                                        ['first_time'],
-                                                    style: TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  Center(
+                                                    child: Text(
+                                                      streamSnapshot.data!.docs[index]
+                                                          ['company_name'],
+                                                      style: TextStyle(fontSize: 20),
+                                                    ),
                                                   ),
-                                                  Text(
-                                                    ":",
-                                                    style: TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  const Divider(
+                                                    thickness: 3,
                                                   ),
-                                                  Text(
-                                                    streamSnapshot
-                                                            .data!.docs[index]
-                                                        ['last_time'],
-                                                    style: TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        top: 20.0),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      //Center Row contents horizontally,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment.center,
+                                                      //Center Row contents vertically,
+                                                      children: [
+                                                        Text(
+                                                          streamSnapshot
+                                                                  .data!.docs[index]
+                                                              ['first_time'],
+                                                          style: const TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight.bold),
+                                                        ),
+                                                        const Text(
+                                                          ":",
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight.bold),
+                                                        ),
+                                                        Text(
+                                                          streamSnapshot
+                                                                  .data!.docs[index]
+                                                              ['last_time'],
+                                                          style: const TextStyle(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight.bold),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        bottom: 20.0),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceAround,
+                                                      //Center Row contents horizontally,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment.center,
+                                                      //Center Row contents vertically,
+                                                      children: [
+                                                        Text(
+                                                          streamSnapshot
+                                                                  .data!.docs[index]
+                                                              ['first_dest'],
+                                                          style:
+                                                              TextStyle(fontSize: 20),
+                                                        ),
+                                                        Text(
+                                                          streamSnapshot
+                                                                  .data!.docs[index]
+                                                              ['last_dest'],
+                                                          style:
+                                                              TextStyle(fontSize: 20),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  const Divider(
+                                                    thickness: 3,
+
+                                                  ),
+                                                  Center(
+                                                    child: Text(
+                                                      "Price: ${streamSnapshot.data!.docs[index]['price']} LE",
+                                                      style: TextStyle(fontSize: 20),
+                                                    ),
+                                                  )
                                                 ],
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  bottom: 20.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                //Center Row contents horizontally,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                //Center Row contents vertically,
-                                                children: [
-                                                  Text(
-                                                    streamSnapshot
-                                                            .data!.docs[index]
-                                                        ['first_dest'],
-                                                    style:
-                                                        TextStyle(fontSize: 20),
-                                                  ),
-                                                  Text(
-                                                    streamSnapshot
-                                                            .data!.docs[index]
-                                                        ['last_dest'],
-                                                    style:
-                                                        TextStyle(fontSize: 20),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Divider(
-                                              thickness: 3,
-                                            ),
-                                            Text(
-                                              "Price: ${streamSnapshot.data!.docs[index]['price']} LE",
-                                              style: TextStyle(fontSize: 20),
-                                            )
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  );
-                                });
-                          })
-                    ]),
+                                      );
+                                    });
+                              })
+                        ]),
+                  ),
+                ),
               ),
             ),
           ],

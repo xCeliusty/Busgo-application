@@ -28,7 +28,7 @@ class _AddTripScreenState extends State<AddTripScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add New Trip'),
+        title: const Text('Add New Trip'),
         centerTitle: true,
       ),
 
@@ -38,11 +38,11 @@ class _AddTripScreenState extends State<AddTripScreen>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Add New Trip',
                 style: TextStyle(fontSize: 26.0,fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30.0,
               ),
               Form(
@@ -52,9 +52,7 @@ class _AddTripScreenState extends State<AddTripScreen>
                      children: [
                        TextFormField(
                          controller: companyController,
-                         autocorrect: true,
-                         textCapitalization: TextCapitalization.words,
-                         enableSuggestions: false,
+                         keyboardType: TextInputType.text,
                          decoration: const InputDecoration(
                            labelText: 'Company Name',
                            prefixIcon: Padding(
@@ -71,18 +69,16 @@ class _AddTripScreenState extends State<AddTripScreen>
                            }
                          },
                          onSaved: (value) {
-                           companyController.text = value!;
+                           // companyController.text = value!;
                          },
                          onChanged: (value) {
-                           companyController.text = value;
+                           // companyController.text = value;
                          },
                        ),
                        SizedBox(height: 16.0,),
                        TextFormField(
                          controller: firstdestController,
-                         autocorrect: true,
-                         textCapitalization: TextCapitalization.words,
-                         enableSuggestions: false,
+                         keyboardType: TextInputType.text,
                          decoration: const InputDecoration(
                            labelText: 'First Destination',
                            prefixIcon: Padding(
@@ -99,19 +95,17 @@ class _AddTripScreenState extends State<AddTripScreen>
                            }
                          },
                          onSaved: (value) {
-                           firstdestController.text = value!;
+                           // firstdestController.text = value!;
                          },
                          onChanged: (value) {
-                           firstdestController.text = value;
+                           // firstdestController.text = value;
                          },
                        ),
 
                        SizedBox(height: 16.0,),
                        TextFormField(
                          controller: lastdestController,
-                         autocorrect: true,
-                         textCapitalization: TextCapitalization.words,
-                         enableSuggestions: false,
+                         keyboardType: TextInputType.text,
                          decoration: const InputDecoration(
                            labelText: 'Last Destination',
                            prefixIcon: Padding(
@@ -128,19 +122,17 @@ class _AddTripScreenState extends State<AddTripScreen>
                            }
                          },
                          onSaved: (value) {
-                           lastdestController.text = value!;
+                           // lastdestController.text = value!;
                          },
                          onChanged: (value) {
-                           lastdestController.text = value;
+                           // lastdestController.text = value;
                          },
                        ),
 
                        SizedBox(height: 16.0,),
                        TextFormField(
                          controller: priceController,
-                         autocorrect: true,
-                         textCapitalization: TextCapitalization.words,
-                         enableSuggestions: false,
+                         keyboardType: TextInputType.number,
                          decoration: const InputDecoration(
                            labelText: 'Price',
                            prefixIcon: Padding(
@@ -157,10 +149,10 @@ class _AddTripScreenState extends State<AddTripScreen>
                            }
                          },
                          onSaved: (value) {
-                           priceController.text = value!;
+                           // priceController.text = value!;
                          },
                          onChanged: (value) {
-                           priceController.text = value;
+                           // priceController.text = value;
                          },
                        ),
 

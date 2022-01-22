@@ -3,6 +3,7 @@ import 'package:busgo/screens/maps.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:busgo/admin/admin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -265,6 +266,14 @@ class _AuthFormState extends State<AuthForm> {
                                       email: _email, password: _password);
                               //Navigator.of(context).pushNamed(FromTo.routeName);
                               Navigator.pushNamed(context, '/FromTo');
+                              if (_email == "admin@admin.com" &&
+                                  _password == "123456")
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => AdminScreen(),
+                                ));
+                              else
+                                Navigator.of(context)
+                                    .pushNamed(FromTo.routeName);
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'user-not-found') {
                                 print('No user found for that email.');
