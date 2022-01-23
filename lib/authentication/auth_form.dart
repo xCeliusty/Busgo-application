@@ -295,8 +295,19 @@ class _AuthFormState extends State<AuthForm> {
                                     .pushNamed(FromTo.routeName);
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'user-not-found') {
-                                print('No user found for that email.');
+                                const snackBar = SnackBar(
+                                      duration: Duration(seconds: 5),
+                                      content: Text(
+                                          "No user found for that email."));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                               } else if (e.code == 'wrong-password') {
+                                const snackBar = SnackBar(
+                                      duration: Duration(seconds: 5),
+                                      content: Text(
+                                          "No user found for that email."));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                                 print('Wrong password provided for that user.');
                               }
                             }

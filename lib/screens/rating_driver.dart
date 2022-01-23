@@ -14,7 +14,7 @@ class _RatingDriverState extends State<RatingDriver> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Example',
+      title: 'Rating',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -32,7 +32,7 @@ class _RatingDriverState extends State<RatingDriver> {
                 scale: 12.2,
               ),
               Text(
-                "Name",
+                "Rola",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Mouse Memoirs',
