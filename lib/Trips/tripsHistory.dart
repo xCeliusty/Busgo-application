@@ -49,7 +49,7 @@ class TripsHistory extends StatelessWidget {
       appBar: AppBar(
         title: Text("Trips History"),
       ),
-      drawer: Drawer(),
+      drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(

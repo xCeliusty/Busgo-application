@@ -1,4 +1,6 @@
 import 'package:busgo/admin/add_trip_screen.dart';
+import 'package:busgo/authentication/auth_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'add_packages_screen.dart';
@@ -100,6 +102,18 @@ class _AdminScreenState extends State<AdminScreen> {
                   ),
                 ],
               ),
+              Padding(
+                  padding: EdgeInsets.only(top: 150),
+                  child: SizedBox(
+                      height: 40,
+                      width: 150,
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            await FirebaseAuth.instance.signOut();
+                            Navigator.of(context)
+                                .pushNamed(AuthScreen.routeName);
+                          },
+                          child: Text('Logout'))))
             ],
           ),
         ),
