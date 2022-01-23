@@ -55,7 +55,7 @@ class _ChatState extends State<Chat> {
                           ),
                         ),
                       ),
-                      //elevation: 20,
+                      elevation: 20,
                       color: Colors.blueGrey,
                       margin: EdgeInsets.only(top: 0, right: 150, left: 0),
                     ),
@@ -96,7 +96,7 @@ class _ChatState extends State<Chat> {
                           size: 50,
                         ),
                         title: Text(
-                          "Uber Has Arraived!",
+                          "BUS-GO Has Arraived!",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Kurale-Regular',

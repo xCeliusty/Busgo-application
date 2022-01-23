@@ -53,7 +53,7 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
                   ),
                 ),
                 TextField(
-                  readOnly: true,
+                  readOnly: false,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -88,7 +88,7 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
                   ),
                 ),
                 TextField(
-                  readOnly: true,
+                  readOnly: false,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -124,7 +124,7 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
                   ),
                 ),
                 TextField(
-                  readOnly: true,
+                  readOnly: false,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -160,7 +160,7 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
                   ),
                 ),
                 TextField(
-                  readOnly: true,
+                  readOnly: false,
                   textAlign: TextAlign.left,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -185,7 +185,7 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
                     ElevatedButton(
                       onPressed: () {
                         // Navigator.pushNamed(context, '/DriverDetails1');
-                        //Navigator.pushNamed(context, '/DriverDetails1');
+                        Navigator.pushNamed(context, '/FromTo');
                       },
                       child: Text("Confirm"),
                     ),
