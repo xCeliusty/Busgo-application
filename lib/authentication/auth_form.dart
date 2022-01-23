@@ -34,10 +34,10 @@ class _AuthFormState extends State<AuthForm> {
           const SnackBar(content: Text("Data submitted successfully")));
       Navigator.of(context).pushNamed(FromTo.routeName);
       // Navigator.pushNamed(context, '/FromTo');
-      if (_email == "admin@admin.com" && _password == "admin123") {
-        Navigator.of(context).pushNamed(FromTo.routeName);
-        Navigator.pushNamed(context, '/FromTo');
-      }
+      // if (_email == "admin@admin.com" && _password == "admin123") {
+      //   Navigator.of(context).pushNamed(FromTo.routeName);
+      //   Navigator.pushNamed(context, '/FromTo');
+      // }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Please enter all fields")));
@@ -295,8 +295,19 @@ class _AuthFormState extends State<AuthForm> {
                                     .pushNamed(FromTo.routeName);
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'user-not-found') {
-                                print('No user found for that email.');
+                                const snackBar = SnackBar(
+                                      duration: Duration(seconds: 5),
+                                      content: Text(
+                                          "No user found for that email."));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                               } else if (e.code == 'wrong-password') {
+                                const snackBar = SnackBar(
+                                      duration: Duration(seconds: 5),
+                                      content: Text(
+                                          "No user found for that email."));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                                 print('Wrong password provided for that user.');
                               }
                             }
