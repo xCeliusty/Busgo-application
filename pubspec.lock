@@ -167,6 +167,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  flutter_rating_stars:
+    dependency: "direct dev"
+    description:
+      name: flutter_rating_stars
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3+4"
   flutter_sliding_up_panel:
     dependency: "direct main"
     description:

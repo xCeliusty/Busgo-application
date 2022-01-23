@@ -1,242 +1,359 @@
-import 'package:flutter_sliding_up_panel/flutter_sliding_up_panel.dart';
+import 'dart:async';
+import 'package:busgo/Drawer/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:busgo/trackingdirectionsmap/locationservice.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DriverDetailsTwoo extends StatefulWidget {
-  final String? title;
-
-  //final VoidCallback? onSetting;
-  const DriverDetailsTwoo({Key? key, this.title}) : super(key: key);
+  //static const routeName = "/FromTo";
 
   @override
-  _DriverDetialsState createState() => _DriverDetialsState();
+  State<DriverDetailsTwoo> createState() => DriverDetailsTwooState();
 }
 
-class _DriverDetialsState extends State<DriverDetailsTwoo> {
-  late ScrollController scrollController;
+class DriverDetailsTwooState extends State<DriverDetailsTwoo> {
+  final Stream<QuerySnapshot> buses =
+      FirebaseFirestore.instance.collection('buses').snapshots();
+  Completer<GoogleMapController> _controller = Completer();
+  TextEditingController _originController = TextEditingController();
+  TextEditingController _destinationController = TextEditingController();
 
-  SlidingUpPanelController panelController = SlidingUpPanelController();
+  Set<Marker> _markers = Set<Marker>();
+  Set<Polygon> _polygons = Set<Polygon>();
+  Set<Polyline> _polylines = Set<Polyline>();
+  List<LatLng> polygonLatLngs = <LatLng>[];
+
+  int _polygonIdCounter = 1;
+  int _polylineIdCounter = 1;
+
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(30.033333, 31.233334),
+    zoom: 14.4746,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+
+    _setMarker(LatLng(30.033333, 31.233334));
+  }
+
+  void _setMarker(LatLng point) {
+    setState(() {
+      _markers.add(
+        Marker(
+          markerId: MarkerId('marker'),
+          position: point,
+        ),
+      );
+    });
+  }
+
+  void _setPolygon() {
+    final String polygonIdVal = 'polygon_$_polygonIdCounter';
+    _polygonIdCounter++;
+
+    _polygons.add(
+      Polygon(
+        polygonId: PolygonId(polygonIdVal),
+        points: polygonLatLngs,
+        strokeWidth: 2,
+        fillColor: Colors.transparent,
+      ),
+    );
+  }
+
+  void _setPolyline(List<PointLatLng> points) {
+    final String polylineIdVal = 'polyline_$_polylineIdCounter';
+    _polylineIdCounter++;
+
+    _polylines.add(
+      Polyline(
+        polylineId: PolylineId(polylineIdVal),
+        width: 2,
+        color: Colors.blue,
+        points: points
+            .map(
+              (point) => LatLng(point.latitude, point.longitude),
+            )
+            .toList(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         Scaffold(
-          body: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage("assets/1.jpg"),
-              fit: BoxFit.cover,
-            )),
+          drawer: AppDrawer(),
+          appBar: AppBar(
+            title: Text('Bus Detials'),
+            backgroundColor: Colors.blueGrey,
           ),
-        ),
-        SlidingUpPanelWidget(
-          child: Container(
-            decoration: const ShapeDecoration(
-              color: Colors.blueAccent,
-              shadows: [
-                BoxShadow(
-                    blurRadius: 5.0,
-                    spreadRadius: 2.0,
-                    color: const Color(0x11000000))
-              ],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0),
+          body: Column(
+            children: [
+              Expanded(
+                child: GoogleMap(
+                  mapType: MapType.normal,
+                  markers: _markers,
+                  polygons: _polygons,
+                  polylines: _polylines,
+                  initialCameraPosition: _kGooglePlex,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                  onTap: (point) {
+                    setState(() {
+                      polygonLatLngs.add(point);
+                      _setPolygon();
+                    });
+                  },
                 ),
               ),
-            ),
-            child: Column(
-              children: <Widget>[
-                //bar blue bare wipe up
-                Container(
-                  child: Row(
-                    children: const [
-                      Icon(
-                        Icons.arrow_upward,
-                        size: 30,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 8.0,
-                        ),
-                      ),
-                      Text(
-                        'swipe up',
-                        style: TextStyle(
-                          //swipe up
-                          color: Color(0xffffffff),
-                        ),
-                      )
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                  height: 40.0,
-                ),
+            ],
+          ),
+        ),
+        StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance.collection('buses').snapshots(),
+          builder: (
+            BuildContext context,
+            AsyncSnapshot<QuerySnapshot> snapshot,
+          ) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong');
+            }
 
-////////////////////eli fo2 dah el 7ta l blue wipe up
-                Flexible(
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Text("Loading");
+            }
+            final data = snapshot.requireData;
+            return ListView.builder(
+              itemCount: data.size,
+              itemBuilder: (context, index) {
+                //x = data.docs[index]["busType"];
+                return Padding(
+                  //padding: const EdgeInsets.all(100.0),
+                  //padding: const EdgeInsets.only(top: 30.0),
+                  padding: const EdgeInsets.only(top: 55),
                   child: Container(
-                    decoration: BoxDecoration(
-                        color: Color(0xFFFFA825), //background color
-                        border: Border.all(
-                          color: Color(0xFF797979), //dah l outline
-                          width: 2, //lenght l outline y3ni somko
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(13))),
-                    //color: Color(0xFFFFA825),
-
-                    //decoration: BoxDecoration(color: Colors.green),
-                    child: ListView(
+                    // constraints: BoxConstraints.expand(bottom: 50),
+                    color: Colors.white,
+                    // height: 120,
+                    //  width: 500,
+                    //double width,
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        //profile pic
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15.0),
-                          child: Row(
-                            //yfsl l pic 3n l kalam(car tags)
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 30.0),
-                                child: ClipRRect(
+                        /////// 1
+                        Row(
+                          //crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: <Widget>[
+                                ClipRRect(
                                   borderRadius: new BorderRadius.circular(8.0),
                                   child: Image.asset(
                                     'assets/person2.jpg',
-                                    height: 90,
+                                    height: 52,
                                   ),
                                 ),
-                              ), //end profile pic
-                              //car model eh                //second [adding]
-                              Padding(
-                                padding: const EdgeInsets.only(right: 58.0),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text(
-                                      ' 2022 Acura ILX',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                    Text(
-                                      '123,تقم',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                  ],
+                                Text(
+                                  '${data.docs[index]["driverName"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
                                 ),
-                              ), //car model eh
-                            ],
-                          ),
-                        ), //end ofsecond [adding]
-
-                        ///5laasna awl row
-                        ///
-                        Padding(
-                          //pading lil phone
-                          padding: const EdgeInsets.only(top: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 40, bottom: 40, top: 0),
-                                child: Column(
-                                  children: const [
-                                    IconButton(
-                                      // padding: new EdgeInsets.all(0.0),
-                                      // color: themeData.primaryColor,
-                                      icon: Icon(
-                                        Icons.local_phone_outlined,
-                                        color: Colors.blueAccent,
-                                        size: 65,
-                                      ),
-                                      onPressed: null,
-                                    ),
-                                  ],
+                              ],
+                            ),
+                            //   ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  '${data.docs[index]["busType"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                //send message
-                                //text
-                                padding: const EdgeInsets.only(
-                                    top: 0, bottom: 30, right: 20),
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pushNamed(context, '/LiveChat');
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: Colors.blueAccent,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        textStyle: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Mouse Memoirs',
-                                        )),
-                                    child: Text(
-                                      'Send Message',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    )),
-                              ),
-                            ],
-                          ),
+                                Text(
+                                  'BusTag: ${data.docs[index]["busTag"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                                Text(
+                                  'Rating ${data.docs[index]["rating"]}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                                // ),
+                              ],
+                            ),
+                          ],
                         ),
-                        //cancel part
-                        Padding(
-                          //text
-                          padding: const EdgeInsets.only(top: 0),
-                          child: ElevatedButton(
+                        ////2
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            ClipRRect(
+                              borderRadius: new BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/iconphone.png',
+                                height: 50,
+                              ),
+                            ),
+                            ElevatedButton(
                               onPressed: () {
-                                // Navigator.pushNamed(context, '/LiveChat');
+                                Navigator.pushNamed(context, '/Chat');
                               },
                               style: ElevatedButton.styleFrom(
-                                  primary: Colors.blueAccent,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
+                                  primary: Colors.blueGrey,
                                   textStyle: TextStyle(
-                                    fontSize: 25,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Mouse Memoirs',
                                   )),
+                              child: Text(
+                                'Send Message',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                // Navigator.pushNamed(context, '/FromTo');
+                                Navigator.pushNamed(context, '/FromTo');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blueGrey,
+                                minimumSize: const Size(165, 40), //w,h
+
+                                textStyle: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Mouse Memoirs',
+                                ),
+                              ),
                               child: Text(
                                 'Cancel',
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
-                              )),
-                        ), //end of pading bain l phone + message
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/RatingDriver');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blueGrey,
+                                minimumSize: const Size(165, 40), //w,h
 
-                        /////confirm part
+                                textStyle: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Mouse Memoirs',
+                                ),
+                              ),
+                              child: Text(
+                                'End Trip',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                    //color: Colors.white,
+                    //////////////////////////////////////write here colum
                   ),
-                ),
-              ],
-              mainAxisSize: MainAxisSize.max,
+                );
+              },
+            );
+          },
+        ),
+        /*ClipRRect(
+          borderRadius: new BorderRadius.circular(8.0),
+          child: Image.asset(
+            'assets/iconphone.jpg',
+            height: 52,
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/LiveChat');
+          },
+          style: ElevatedButton.styleFrom(
+              primary: Colors.blueGrey,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              textStyle: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Mouse Memoirs',
+              )),
+          child: Text(
+            'Send Message',
+            style: TextStyle(
+              color: Colors.white,
             ),
           ),
-          controlHeight: 40.0,
-          anchor: 0.4,
-          panelController: panelController,
-          onTap: () {
-            ///Customize the processing logic
-            if (SlidingUpPanelStatus.anchored == panelController.status) {
-              panelController.collapse();
-            } else {
-              panelController.anchor();
-            }
-          },
-          enableOnTap: true, //Enable the onTap callback for control bar.
-        ),
+        ),*/
+        ///////
       ],
     );
+  }
+
+  Future<void> _goToPlace(
+    // Map<String, dynamic> place,
+    double lat,
+    double lng,
+    Map<String, dynamic> boundsNe,
+    Map<String, dynamic> boundsSw,
+  ) async {
+    // final double lat = place['geometry']['location']['lat'];
+    // final double lng = place['geometry']['location']['lng'];
+
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(lat, lng), zoom: 12),
+      ),
+    );
+
+    controller.animateCamera(
+      CameraUpdate.newLatLngBounds(
+          LatLngBounds(
+            southwest: LatLng(boundsSw['lat'], boundsSw['lng']),
+            northeast: LatLng(boundsNe['lat'], boundsNe['lng']),
+          ),
+          25),
+    );
+    _setMarker(LatLng(lat, lng));
   }
 }
