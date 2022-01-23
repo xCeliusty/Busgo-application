@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ViewEditProfile extends StatefulWidget {
   const ViewEditProfile({Key? key}) : super(key: key);
 
-static const routeName = "/vieweditprofile";
+  static const routeName = "/vieweditprofile";
 
   @override
   _ViewEditProfileState createState() => _ViewEditProfileState();
@@ -13,102 +13,45 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Edit Profile'),
+        backgroundColor: Colors.blueGrey,
+      ),
       body: Container(
-        /*
-        decoration: BoxDecoration(
-            color: Colors.amber, //background color
-            border: Border.all(
-              color: Color(0xFFB42C2C), //dah l outline
-              width: 2, //lenght l outline y3ni somko
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(13))),
-        //color: Color(0xFFFFA825),
-*/
         //decoration: BoxDecoration(color: Colors.green),
-        child: ListView(
+        margin: EdgeInsets.only(left: 20, top: 10, right: 20, bottom: 0),
+        child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //mainAxisSize: MainAxisSize.max,
           children: [
-            //second [adding]
-            // Padding(
-            // padding: const EdgeInsets.only(left: 10),
-            //child:
-            // Align(
-            // alignment: Alignment.centerLeft,
-            //child:
-            // Container(
-            //backgroundColor: Colors.blueAccent,
-            //child:
-            Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 15.0,
-                    bottom: 50,
-                  ),
-                  child: Container(
-                    //  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    //  backgroundColor: Colors.amber,
-                    child: Row(
-                      //yfsl l pic 3n l kalam(car tags)
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
-                          child: ClipRRect(
-                            borderRadius: new BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/person2.jpg',
-                              height: 90,
-                            ),
-                          ),
-                        ), //end profile pic
-                        //car model eh                //second [adding]
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 15.0,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
-                              Text(
-                                'Name',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              Text(
-                                'Hagar',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ), //car model eh
-                      ],
-                    ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: ClipRRect(
+                  borderRadius: new BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/person2.jpg',
+                    height: 80,
                   ),
                 ),
-                /////NAME 1ST TEXT
+              ),
+            ),
+            //1
+            Column(
+              children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                    left: 10,
-                  ),
-                  child: TextField(
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      hintText: "Phone number",
-                    ),
+                  padding: const EdgeInsets.only(right: 260),
+                  child: Text(
+                    'Name',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      // color: Colors.amber,
+                      color: Colors.black,
                     ),
                   ),
-                  //],
-                  //),
                 ),
-                ////ENTER NAME
                 TextField(
                   readOnly: true,
                   textAlign: TextAlign.left,
@@ -116,43 +59,34 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    fillColor: Colors.amber,
-                    filled: true, // To set background to light grey
-                    hintText: "+201113534567",
+                    // fillColor: Colors.white, //background of phonenumber
+                    //filled: true, // To set background to light grey
+                    hintText: "Enter Your Name",
                   ),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    //color: Colors.white,
+                    fontSize: 20,
+                    height: 0.01,
+
+                    //width:
                   ),
                 ),
-
-                /////////////////////////////////////////////////////////////
+              ],
+            ),
+            //2
+            Column(
+              children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                    left: 10,
-                    // bottom: 0,
-                  ),
-                  child:
-                      // Column( children: [
-                      TextField(
-                    readOnly: true,
-                    // textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      //fillColor: Colors.amber,
-                      //filled: true, // To set background to light grey
-                      hintText: "Email",
-                    ),
+                  padding: const EdgeInsets.only(right: 260),
+                  child: Text(
+                    'Email',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
-                      //color: Colors.grey
+                      color: Colors.black,
                     ),
                   ),
-                  //],
-                  //),
                 ),
-                ////ENTER NAME
                 TextField(
                   readOnly: true,
                   textAlign: TextAlign.left,
@@ -160,132 +94,105 @@ class _ViewEditProfileState extends State<ViewEditProfile> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    fillColor: Colors.amber,
+                    fillColor: Colors.white,
                     filled: true, // To set background to light grey
                     hintText: "Add Your Email",
                     suffixIcon: IconButton(
-                      onPressed: null /*() =>_controller.clear()*/,
+                      onPressed: null,
                       icon: Icon(Icons.create_outlined),
                     ),
                   ),
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      color: Colors.amber),
-                ),
-                /////////////////////////////////////////////////////////////333333333333333
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 10,
-                    // bottom: 0,
-                  ),
-                  child:
-                      // Column( children: [
-                      TextField(
-                    readOnly: true,
-                    // textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      //fillColor: Colors.amber,
-                      //filled: true, // To set background to light grey
-                      hintText: "City",
-                    ),
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.grey),
-                  ),
-                  //],
-                  //),
-                ),
-                ////ENTER NAME
-                TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.left,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    fillColor: Colors.amber,
-                    filled: true, // To set background to light grey
-                    hintText: "Cairo",
-                    suffixIcon: IconButton(
-                      onPressed: null /*() =>_controller.clear()*/,
-                      icon: Icon(Icons.create_outlined),
-                    ),
-                  ),
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      color: Colors.white),
-                ), //////////////////////////////////////////444444444444444444
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 10,
-                    // bottom: 0,
-                  ),
-                  child:
-                      // Column( children: [
-                      TextField(
-                    readOnly: true,
-                    // textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      //fillColor: Colors.amber,
-                      //filled: true, // To set background to light grey
-                      hintText: "Language",
-                    ),
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.grey),
-                  ),
-                  //],
-                  //),
-                ),
-                ////ENTER NAME
-                TextField(
-                  readOnly: true,
-                  textAlign: TextAlign.left,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    fillColor: Colors.amber,
-                    filled: true, // To set background to light grey
-                    hintText: "English",
-                    suffixIcon: IconButton(
-                      onPressed: null /*() =>_controller.clear()*/,
-                      icon: Icon(Icons.create_outlined),
-                    ),
-                  ),
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 15,
                       color: Colors.white),
                 ),
               ],
             ),
-            // ),
-            ButtonBar(
+            //3
+            Column(
               children: [
-                //  TextButton(onPressed: () {}, child: Text("Cancle")),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.amber,
-                  ),
-                  onPressed: () {
-                    //  Navigator.pushNamed(context, '/DriverDetails1');
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(right: 200),
                   child: Text(
-                    "Save",
+                    'Phone Number',
                     style: TextStyle(
-                      fontFamily: 'Lalezar-Regular',
-                      // backgroundColor: Colors.amber,
-                      color: Colors.blueAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.black,
                     ),
                   ),
                 ),
+                TextField(
+                  readOnly: true,
+                  textAlign: TextAlign.left,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true, // To set background to light grey
+                    hintText: "+201113534567",
+                    suffixIcon: IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.create_outlined),
+                    ),
+                  ),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.white),
+                ),
               ],
-            ) //car model eh
+            ),
+            //4
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 250),
+                  child: Text(
+                    'Language',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                TextField(
+                  readOnly: true,
+                  textAlign: TextAlign.left,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true, // To set background to light grey
+                    hintText: "English",
+                    suffixIcon: IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.create_outlined),
+                    ),
+                  ),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.white),
+                ),
+                ButtonBar(
+                  children: [
+                    //  TextButton(onPressed: () {}, child: Text("Cancle")),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigator.pushNamed(context, '/DriverDetails1');
+                        //Navigator.pushNamed(context, '/DriverDetails1');
+                      },
+                      child: Text("Confirm"),
+                    ),
+                  ],
+                ),
+              ],
+            )
           ],
         ),
       ),
