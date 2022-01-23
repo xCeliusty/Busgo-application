@@ -38,17 +38,17 @@ class MyApp extends StatelessWidget {
         AuthScreen.routeName: (BuildContext context) {
           return const AuthScreen();
         },
-        
+
         //FromTo.routeName: (context) => const FromTo(),
         ViewEditProfile.routeName: (context) => const ViewEditProfile(),
-        '/LiveChat': (context) => const Chat(),
-        '/DriverDetails2': (context) => const DriverDetailsTwoo(),
+        '/Chat': (context) => const Chat(),
+        '/DriverDetails2': (context) => DriverDetailsTwoo(),
         '/DriverDetails1': (context) => DriverDetails(),
         '/FromTo': (context) => FromTo(),
-        '/Rating': (context) => const RatingDriver(),
+        '/RatingDriver': (context) => const RatingDriver(),
       },
-      //home: const Splash(),
-      home: FromTo(),
+      home: const Splash(),
+      //home: FromTo(),
     );
   }
 }

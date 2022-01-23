@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:busgo/trackingdirectionsmap/locationservice.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 //import 'package:firebase_core/firebase_core.dart';
 
 class DriverDetails extends StatefulWidget {
@@ -131,11 +133,11 @@ class DriverDetailsState extends State<DriverDetails> {
                 return Padding(
                   //padding: const EdgeInsets.all(100.0),
                   //padding: const EdgeInsets.only(top: 30.0),
-                  padding: const EdgeInsets.only(top: 55),
+                  padding: const EdgeInsets.only(top: 56.5),
                   child: Container(
                     // constraints: BoxConstraints.expand(bottom: 50),
                     color: Colors.white,
-                    height: 120,
+                    height: 100,
                     width: 500,
                     //double width,
                     child: Column(
@@ -155,18 +157,18 @@ class DriverDetailsState extends State<DriverDetails> {
                                 ClipRRect(
                                   borderRadius: new BorderRadius.circular(8.0),
                                   child: Image.asset(
-                                    'assets/cars.png',
-                                    height: 52,
+                                    'assets/minibus2x.jpg',
+                                    height: 50,
                                   ),
                                 ),
-                                Text(
+                                /* Text(
                                   '${data.docs[index]["driverName"]}',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 17,
                                     color: Colors.blueGrey,
                                   ),
-                                ),
+                                ),*/
                               ],
                             ),
                             //   ),
@@ -204,14 +206,14 @@ class DriverDetailsState extends State<DriverDetails> {
                                     color: Colors.blueGrey,
                                   ),
                                 ),
-                                Text(
+                                /* Text(
                                   'Rating ${data.docs[index]["rating"]}',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 17,
                                     color: Colors.blueGrey,
                                   ),
-                                ),
+                                ),*/
                                 Text(
                                   '1:55 pm ',
                                   style: TextStyle(
@@ -226,10 +228,11 @@ class DriverDetailsState extends State<DriverDetails> {
                         ),
 
                         /////////////////////Button/////////////////////////////
-                        //Padding(
+                        // Padding(
                         //text
-                        //padding: const EdgeInsets.only(top: 0, bottom: 0, right: 0),
-                        //child:
+                        // padding: const EdgeInsets.only(
+                        //   top: 2, bottom: 0, right: 0),
+                        // child:
                         ElevatedButton(
                           onPressed: () {
                             Navigator.pushNamed(context, '/DriverDetails2');
@@ -255,7 +258,7 @@ class DriverDetailsState extends State<DriverDetails> {
                             ),
                           ),
                         ),
-                        //  ),
+                        // ),
                       ],
                     ),
                     //////////////////////////////////////write here colum
