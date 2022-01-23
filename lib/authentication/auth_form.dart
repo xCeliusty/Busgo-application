@@ -34,10 +34,10 @@ class _AuthFormState extends State<AuthForm> {
           const SnackBar(content: Text("Data submitted successfully")));
       Navigator.of(context).pushNamed(FromTo.routeName);
       // Navigator.pushNamed(context, '/FromTo');
-      if (_email == "admin@admin.com" && _password == "admin123") {
-        Navigator.of(context).pushNamed(FromTo.routeName);
-        Navigator.pushNamed(context, '/FromTo');
-      }
+      // if (_email == "admin@admin.com" && _password == "admin123") {
+      //   Navigator.of(context).pushNamed(FromTo.routeName);
+      //   Navigator.pushNamed(context, '/FromTo');
+      // }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Please enter all fields")));
