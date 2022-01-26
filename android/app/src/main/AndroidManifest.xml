@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.busgo">
+    package="com.bus.go">
    <application
         android:label="Bus Go"
         android:icon="@mipmap/ic_launcher">
@@ -38,6 +38,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
             <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value=""/>
+               android:value="AIzaSyC8PZ6tdOHKTRtHt-234UV7s8QnQzbgGAs"/>
     </application>
 </manifest>
