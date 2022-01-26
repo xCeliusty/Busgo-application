@@ -46,7 +46,7 @@ class _ChatState extends State<Chat> {
                           size: 50,
                         ),
                         title: Text(
-                          "Uber Has arrived!",
+                          "Busgo Has arrived!",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Kurale-Regular',
