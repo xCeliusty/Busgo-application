@@ -245,15 +245,6 @@ class _AuthFormState extends State<AuthForm> {
                               print(e);
                             }
 
-                            // var uid = FirebaseAuth.instance.currentUser!.uid;
-
-                            // users.add({
-                            //   'uid': uid,
-                            //   'address': _address,
-                            //   'phonenumber': _phoneNumber,
-                            //   'username': _username,
-                            // });
-                            // _submitForm();
                             DocumentReference ref = FirebaseFirestore.instance
                                 .collection('users')
                                 .doc(FirebaseAuth.instance.currentUser!.uid);
