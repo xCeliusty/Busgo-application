@@ -1,5 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bus.go">
+    
+    
+    
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+     <uses-permission android:name="android.permission.INTERNET"/>
+     
+    <permission
+        android:name="com.example.mapexdemo.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" /> 
+    
    <application
         android:label="Bus Go"
         android:icon="@mipmap/ic_launcher">
