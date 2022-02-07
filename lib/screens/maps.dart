@@ -1,19 +1,19 @@
 import 'dart:async';
-import 'package:busgo/Drawer/drawer.dart';
+
+import 'package:busgo/drawer/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:busgo/trackingdirectionsmap/locationservice.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FromTo extends StatefulWidget {
-  static const routeName = "/FromTo";
-
+  static const routeName = '/FromTo';
   @override
   State<FromTo> createState() => MapFromToState();
 }
 
 class MapFromToState extends State<FromTo> {
-  static const routeName = "/from-to";
+  static const routeName = '/FromTo';
   Completer<GoogleMapController> _controller = Completer();
   TextEditingController _originController = TextEditingController();
   TextEditingController _destinationController = TextEditingController();
@@ -52,15 +52,6 @@ class MapFromToState extends State<FromTo> {
   void _setPolygon() {
     final String polygonIdVal = 'polygon_$_polygonIdCounter';
     _polygonIdCounter++;
-
-    _polygons.add(
-      Polygon(
-        polygonId: PolygonId(polygonIdVal),
-        points: polygonLatLngs,
-        strokeWidth: 2,
-        fillColor: Colors.transparent,
-      ),
-    );
   }
 
   void _setPolyline(List<PointLatLng> points) {
@@ -70,7 +61,7 @@ class MapFromToState extends State<FromTo> {
     _polylines.add(
       Polyline(
         polylineId: PolylineId(polylineIdVal),
-        width: 2,
+        width: 5,
         color: Colors.blue,
         points: points
             .map(
@@ -81,12 +72,16 @@ class MapFromToState extends State<FromTo> {
     );
   }
 
+  late String orginInput;
+  late String DestinationInput;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       drawer: AppDrawer(),
+      // backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Set Location'),
+        title: Text('Enter orgin and destination'),
         backgroundColor: Colors.blueGrey,
       ),
       body: Column(
@@ -98,17 +93,16 @@ class MapFromToState extends State<FromTo> {
                   children: [
                     TextFormField(
                       controller: _originController,
-                      decoration:
-                          InputDecoration(hintText: ' Enter Start Point'),
-                      onChanged: (value) {
-                        print(value);
+                      decoration: InputDecoration(hintText: ' Origin'),
+                      onChanged: (orginInput) {
+                        print(orginInput);
                       },
                     ),
                     TextFormField(
                       controller: _destinationController,
-                      decoration: InputDecoration(hintText: 'Enter Drop Point'),
-                      onChanged: (value) {
-                        print(value);
+                      decoration: InputDecoration(hintText: ' Destination'),
+                      onChanged: (DestinationInput) {
+                        print(DestinationInput);
                       },
                     ),
                     ButtonBar(
@@ -116,33 +110,41 @@ class MapFromToState extends State<FromTo> {
                         //  TextButton(onPressed: () {}, child: Text("Cancle")),
                         ElevatedButton(
                           onPressed: () async {
-                            Navigator.pushNamed(context, '/DriverDetails1');
+                            Navigator.pushNamed(context, '/TrafficSummary');
                           },
-                          child: Text("Confirm"),
+                          child: Text("Check traffic"),
                         ),
                       ],
-                    )
+                    ) /*Text(
+                        '$Time()',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                        ),
+                      ),*/
                   ],
                 ),
               ),
               IconButton(
-                onPressed: () async {
-                  var directions = await LocationService().getDirections(
-                    _originController.text,
-                    _destinationController.text,
-                  );
-                  _goToPlace(
-                    directions['start_location']['lat'],
-                    directions['start_location']['lng'],
-                    directions['bounds_ne'],
-                    directions['bounds_sw'],
-                  );
+                  onPressed: () async {
+                    var directions = await LocationService().getDirections(
+                      // var o=_originController.text;
+                      _originController.text,
+                      _destinationController.text,
+                      // ignore: avoid_print
+                      // print(_originController.text);
+                    );
+                    _goToPlace(
+                      directions['start_location']['lat'],
+                      directions['start_location']['lng'],
+                      directions['bounds_ne'],
+                      directions['bounds_sw'],
+                    );
 
-                  _setPolyline(directions['polyline_decoded']);
-                },
-                icon: Icon(Icons.search),
-                color: Colors.white,
-              ),
+                    _setPolyline(directions['polyline_decoded']);
+                  },
+                  icon: Icon(Icons.search),
+                  color: Colors.pink),
             ],
           ),
           Expanded(
@@ -163,6 +165,19 @@ class MapFromToState extends State<FromTo> {
               },
             ),
           ),
+
+          ///ME ROLA DYFAH
+
+          /* Visibility(
+                         //   visible: _placeDistance == null ? false : true,
+                            child: Text(
+                              'DISTANCE: $Time km',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),*/
         ],
       ),
     );
@@ -195,4 +210,51 @@ class MapFromToState extends State<FromTo> {
     );
     _setMarker(LatLng(lat, lng));
   }
+
+/*
+Future<LatLng?> getUserLocation() async {
+
+  LocationManager.LocationData? orginInput;
+
+  final location = LocationManager.Location();
+
+  try {
+
+    orginInput = await location.getLocation();
+
+    final lat = orginInput.latitude;
+
+    final lng = orginInput.longitude;
+
+    final center = LatLng(lat!, lng!);
+
+    return center;
+    print('the center is $center');
+
+  } on Exception catch (_) {
+      print("throwing new error");
+      throw Exception("Error on server");
+
+}
+}*/
+
+// void Time() async {
+//   Dio dio = new Dio();
+//   //var dio = Dio();
+//   var API_KEY='';
+//   final response = await dio.
+//   //get("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=orginInput&destinations=DestinationInput&key=API_KEY");
+//   get("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=40.6655101,-73.89188969999998&destinations=40.6905615%2C,-73.9976592&key=API_KEY");
+//    //printvalue=response.data;
+//    late String orginInput;
+//  late String DestinationInput;
+//   return (response.data);
+// }
+// void Times(){
+
+// Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+// List<Placemark> placemark = await Geolocator().placemarkFromAddress("Gronausestraat 710, Enschede");
+//  https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+
+// }
 }
