@@ -1,12 +1,17 @@
 import 'package:busgo/authentication/auth_form.dart';
 import 'package:busgo/authentication/auth_screen.dart';
-import 'package:busgo/pages/traffic_ui.dart';
-
+import 'package:busgo/trips/packages.dart';
 import 'package:busgo/screens/maps.dart';
 import 'package:busgo/pages/splash_screen.dart';
-import 'package:busgo/pages/edit_profile.dart';
+import 'package:busgo/pages/view_edit_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'Trips/find_trips.dart';
+import 'Trips/tripsHistory.dart';
+import './screens/chat.dart';
+import './screens/DriverDetails.dart';
+import './screens/rating_driver.dart';
+import './screens/DriverDetailsTwoo.dart';
 import './screens/maps.dart';
 
 Future<void> main() async {
@@ -27,15 +32,20 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.white,
       ),
       routes: {
+        findTrips.routeName: (context) => const findTripss(),
+        Packages.routeName: (context) => Packages(),
+        TripsHistory.routeName: (context) => TripsHistory(),
         AuthScreen.routeName: (BuildContext context) {
           return const AuthScreen();
         },
 
         //FromTo.routeName: (context) => const FromTo(),
-        Editprofile.routeName: (context) => Editprofile(),
-
-        '/TrafficSummary': (context) => TrafficSummaryScreen(),
+        ViewEditProfile.routeName: (context) => const ViewEditProfile(),
+        '/Chat': (context) => const Chat(),
+        '/DriverDetails2': (context) => DriverDetailsTwoo(),
+        '/DriverDetails1': (context) => DriverDetails(),
         '/FromTo': (context) => FromTo(),
+        '/RatingDriver': (context) => const RatingDriver(),
       },
       home: const Splash(),
       //home: FromTo(),
